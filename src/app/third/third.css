@@ -1,0 +1,53 @@
+.scroll-container {
+  height: 400vh;
+  background: linear-gradient(to left, black 0, rgb(49, 49, 49) 50%, black 100%);
+}
+
+.sticky-box {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.text-block {
+  position: absolute;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  z-index: 10;
+  max-width: 250px;
+  pointer-events: none;
+  transition: opacity 0.1s ease-out, transform 0.1s ease-out;
+}
+
+.left {
+  left: 10%;
+  text-align: left;
+}
+
+.right {
+  right: 10%;
+  text-align: right;
+}
+
+.text-block h2 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.text-block p {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+.iphone-model {
+  width: 100vw;
+  height: 85vh;
+  outline: none;
+}

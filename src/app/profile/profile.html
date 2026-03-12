@@ -1,0 +1,36 @@
+<div class="profile-wrapper">
+  @if (user()) {
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="avatar-container">
+          <img [src]="user().avatar" alt="Avatar" class="large-avatar">
+          <div class="status-badge"></div>
+        </div>
+        <h1>{{ user().firstName }} {{ user().lastName }}</h1>
+        <span class="role-tag">{{ user().role }}</span>
+      </div>
+
+      <div class="profile-details">
+        <div class="detail-box">
+          <label>Email</label>
+          <p>{{ user().email }}</p>
+        </div>
+        <div class="detail-box">
+          <label>Age</label>
+          <p>{{ user().age }} years old</p>
+        </div>
+        <div class="detail-box">
+          <label>Address</label>
+          <p>{{ user().address }}</p>
+        </div>
+      </div>
+
+      <button class="edit-btn" (click)="logout()">Log Out</button>
+    </div>
+  } @else {
+    <div class="loading-spinner">
+       <i class="fa-solid fa-circle-notch fa-spin"></i>
+       <p>Syncing Profile...</p>
+    </div>
+  }
+</div>

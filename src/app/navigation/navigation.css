@@ -1,0 +1,158 @@
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0 8%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  z-index: 1000;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.logo {
+  cursor: pointer;
+  font-weight: 800;
+  color: #FFFFFF;
+  font-size: 1.6rem;
+  letter-spacing: -1px;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.nav-menu li {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  font-weight: 500;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-items: center;
+}
+
+.nav-menu li:hover {
+  color: #FFFFFF;
+}
+
+.nav-menu li::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -6px;
+  left: 0;
+  background-color: #FFFFFF;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.nav-menu li.active-link {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.nav-menu li.active-link::after {
+  transform: scaleX(1);
+}
+
+.nav-auth-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-right: 8px;
+}
+
+.nav-auth-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.auth-trigger {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+}
+
+.auth-trigger i {
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.auth-trigger span {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.profile-active i {
+  color: #676B89;
+  filter: drop-shadow(0 0 5px rgba(103, 107, 137, 0.5));
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hidden-start {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  display: flex;
+}
+
+.hl, .hr {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.hl {
+  left: 0;
+  background: linear-gradient(to right, black 0, rgb(27, 27, 27) 35%, transparent); 
+}
+
+.hr {
+  right: 0;
+  background: linear-gradient(to left, black 0, rgb(27, 27, 27) 35%, transparent); 
+}

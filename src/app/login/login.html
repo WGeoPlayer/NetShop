@@ -1,0 +1,15 @@
+<div (click)="closePopupArea($event)" class="popup">
+    <form [formGroup]="loginInfo" (ngSubmit)="login()">
+        <h1>Login</h1>
+        @if (errorMessage()) {
+        <div class="error-toast">
+            {{errorMessage()}}
+        </div>
+        }
+        <input type="text" placeholder="email" formControlName="email">
+        <input type="password" placeholder="password" formControlName="password">
+        <a (click)="gotosignup()">Don't have an account? Register here!</a>
+        <button class="login" [disabled]="loginInfo.invalid">LOGIN</button>
+        <button class="closelogin" (click)="close()">X</button>
+    </form>
+</div>

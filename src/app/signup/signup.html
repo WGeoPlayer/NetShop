@@ -1,0 +1,33 @@
+<div (click)="closePopupArea($event)" class="popup">
+<form [formGroup]="registerInfo" (ngSubmit)="register()">
+    <h1>Registration</h1>
+    
+    <div class="mainArea">
+        <div class="left">
+            <input type="text" placeholder="firstName" formControlName="firstName">
+            <input type="text" placeholder="lastName" formControlName="lastName">
+            <input type="text" placeholder="age" formControlName="age">
+            <input type="email" placeholder="email" formControlName="email">
+            <input type="password" placeholder="password" formControlName="password">
+        </div>
+        <div class="right">
+            <input type="text" placeholder="address" formControlName="address">
+            <input type="text" placeholder="phone" formControlName="phone">
+            <input type="text" placeholder="zipcode" formControlName="zipcode">
+            <input type="text" placeholder="avatar" formControlName="avatar">
+            <select formControlName="gender">
+                <option value="MALE">Male</option>
+                <option value="FEMALE">Female</option>
+                <option value="OTHER">Other</option>
+            </select>
+        </div>
+    </div>
+    @if (errorMessage()) {
+        <div class="error-toast">
+            {{ errorMessage() }}
+        </div>
+    }
+    <button class="signup" [disabled]="registerInfo.invalid">REGISTER</button>
+    <button class="closesignup" (click)="opensign.emit(false)">X</button>
+</form>
+</div>

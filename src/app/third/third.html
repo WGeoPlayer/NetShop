@@ -1,0 +1,22 @@
+<div class="scroll-container">
+    <div class="sticky-box">
+
+        <div class="text-block left" [style.opacity]="leftOpacity"
+            [style.transform]="'translateX(' + (1 - leftOpacity) * -20 + 'px)'">
+            <h2>Titanium.</h2>
+            <p>Stronger than ever.</p>
+        </div>
+
+        <div class="text-block right" [style.opacity]="rightOpacity"
+            [style.transform]="'translateX(' + (1 - rightOpacity) * 20 + 'px)'">
+            <h2>Ultrafast.</h2>
+            <p>Powered by the A17 Pro chip.</p>
+        </div>
+
+        <model-viewer src="iphone.glb" alt="3D iPhone" shadow-intensity="2"
+            [attr.camera-orbit]="rotation + 'deg 90deg 105%'" interpolation-decay="200" disable-zoom
+            class="iphone-model">
+        </model-viewer>
+
+    </div>
+</div>

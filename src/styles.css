@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+@import "@fontsource/comfortaa";
+@import "@fontsource/comfortaa/700.css";
+
+* {
+  font-family: 'Comfortaa', cursive;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #F4F7F9;
+  color: #2C353B;
+}
+
+.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}

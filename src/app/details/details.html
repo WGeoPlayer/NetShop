@@ -1,0 +1,74 @@
+<div (click)="closePopupArea($event)" class="popup">
+    @if (product() && product().images) {
+    <main class="details-card">
+        <div class="next-product-btn" (click)="closedetailsofc()">
+            <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <section class="image-gallery">
+            <div class="thumbnails-list">
+                @for (img of product().images; track $index) {
+                <div class="thumb-item" [class.active]="selectedImageIndex() === $index"
+                    (click)="selectedImageIndex.set($index)">
+                    <img [src]="img" alt="product">
+                </div>
+                }
+            </div>
+
+            <div class="main-image-container">
+                <button class="slide-btn prev" (click)="prevImage()">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+
+                <img [src]="product().images[selectedImageIndex()]" class="main-img">
+
+                <button class="slide-btn next" (click)="nextImage()">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <section class="info-content">
+            <h2 class="brand-tag">{{ product().brand }}</h2>
+            <h1 class="product-name">{{ product().title }}</h1>
+
+            <div class="price-section">
+                @if (product().price.discountPercentage > 0) {
+                <div class="discount-badge">
+                    -{{ product().price.discountPercentage }}%
+                </div>
+                <div class="price-row">
+                    <span class="old-price">
+                        {{ product().price.beforeDiscount }}{{ product().price.currency }}
+                    </span>
+                    <span class="new-price">
+                        {{ product().price.current }}{{ product().price.currency }}
+                    </span>
+                </div>
+                } @else {
+                <div class="price-row">
+                    <span class="normal-price">
+                        {{ product().price.current }}{{ product().price.currency }}
+                    </span>
+                </div>
+                }
+            </div>
+
+            <h3 style="margin-bottom: 10px;">rating: {{product().rating.toFixed(1) == 0 ? product().rating.toFixed(0) :
+                product().rating.toFixed(1)}} </h3>
+
+            <h3 style="margin-bottom: 10px;" [style.color]="product().stock <= 0 ? 'red' : 'green'">stock:
+                {{product().stock < 0 ? 0 : product().stock}} </h3>
+
+            <p class="description">{{ product().description.split(' ').slice(0, 105).join(' ') }}
+                {{product().description.length >= 350 ? '...' : ''}} </p>
+
+            <button class="add-btn" [disabled]="product().stock <= 0">
+                {{ product().stock > 0 ? 'Add to Cart' : 'Out of Stock' }}
+            </button>
+        </section>
+    </main>
+    }
+    @else {
+    <div class="loading-spinner">Loading...</div>
+    }
+</div>
