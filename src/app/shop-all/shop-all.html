@@ -1,1 +1,98 @@
-<p>shop-all works!</p>
+<div class="shop-container">
+    <button class="mobile-filter-btn" (click)="toggleSidebar()">
+        {{ isSidebarOpen() ? 'Close Filters' : 'Filters' }}
+    </button>
+
+    <aside class="filter-sidebar" [class.open]="isSidebarOpen()">
+        <div class="sidebar-header">
+            <span class="close-btn" (click)="toggleSidebar()">X</span>
+        </div>
+
+        <div class="category-group">
+            <button [class.active]="service.selectedCat() === 'all'" (click)="filterCat('all'); toggleSidebar()">
+                All Products
+            </button>
+
+            @for (item of category(); track item.id) {
+            <button [class.active]="service.selectedCat() === item.id" (click)="filterCat(item.id); toggleSidebar()">
+                {{item.name}}
+            </button>
+            }
+        </div>
+
+        <div class="brand-list">
+            <h3>Brands</h3>
+            <div class="brand-grid">
+                @for (item of brands(); track item) {
+                <button [class.active]="service.selectedBrand() === item" (click)="filterBrand(item); toggleSidebar()">
+                    {{item}}
+                </button>
+                }
+            </div>
+        </div>
+    </aside>
+
+    <main class="shop-main">
+        <div class="search-bar-container">
+            <input type="text" placeholder="Search tech..." (input)="onSearch($event)">
+        </div>
+        @if (products().length > 0) {
+        <div class="product-grid">
+            @for (item of products(); track item._id) {
+            <div class="product-card" (click)="open(item._id)">
+                <div class="image-container">
+                    <img [src]="item.images[0] || item.thumbnail" class="main-img" #img1
+                        (error)="img1.src = 'https://placehold.co/400x400?text=No+Photo'">
+
+                    <img [src]="item.images[1] || item.images[0]" class="hover-img" #img2
+                        (error)="img2.src = 'https://placehold.co/400x400?text=No+Photo'">
+
+                    @if (item.price.discountPercentage > 0) {
+                    <span class="discount-tag">-{{item.price.discountPercentage}}%</span>
+                    }
+                </div>
+                <div class="product-info">
+                    <h3>{{item.title}}</h3>
+                    <div class="price-row">
+                        <span class="current-price">${{item.price.current}}</span>
+                        @if (item.price.beforeDiscount > item.price.current) {
+                        <span class="old-price">${{item.price.beforeDiscount}}</span>
+                        }
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+        }
+        @else {
+        <div class="no-results-container">
+            <div class="no-results-content">
+                <span class="no-results-icon">🔍</span>
+                <h2>No items have been found</h2>
+            </div>
+        </div>
+        }
+        <div class="pagination-footer">
+            <div class="page-numbers">
+                <button (click)="goToFirst()" [disabled]="currentPage() === 1">«</button>
+
+                @for (p of getVisiblePages(); track p) {
+                <button [class.active]="p === currentPage()" (click)="goToPage(p)">
+                    {{ p }}
+                </button>
+                }
+
+                <button (click)="goToLast()" [disabled]="currentPage() === totalPages">»</button>
+            </div>
+
+            <div class="items-per-page">
+                <select (change)="updatePageSize($event)">
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="38">38</option>
+                </select>
+            </div>
+        </div>
+    </main>
+</div>

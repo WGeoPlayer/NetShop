@@ -6,8 +6,7 @@
   <div class="logo" routerLink="/" (click)="scrollToTop()">NetShop</div>
 
   <ul class="nav-menu">
-    <li routerLink="/shopAll" routerLinkActive="active-link" tabindex="0">Shop</li>
-    <li routerLink="/cart" routerLinkActive="active-link" tabindex="0">Cart</li>
+    <li (click)="gotoshopall()" routerLinkActive="active-link" tabindex="0">Shop</li>
     <li class="nav-auth-item">
       @if(isLoggedIn()) {
       <div (click)="handleProfileClick()" class="auth-trigger profile-active">
@@ -22,12 +21,13 @@
       </div>
       }
       @else{
-      <div (click)="handleProfileClick()" class="auth-trigger">
+      <div  (click)="handleProfileClick(); this.router.navigate(['/'])" class="auth-trigger">
         <i class="fa-solid fa-circle-user"></i>
         <span>Log In</span>
       </div>
       }
 
     </li>
+    <li routerLink="/cart" routerLinkActive="active-link" tabindex="0"><i class="fa-solid fa-cart-shopping"></i></li>
   </ul>
 </nav>

@@ -22,10 +22,10 @@
 
           <div class="product-price">
             @if (item.price.discountPercentage > 0) {
-            <span class="old-price">{{ item.price.beforeDiscount }}{{ item.price.currency }}</span>
-            <span class="current-price discounted">{{ item.price.current }}{{ item.price.currency }}</span>
+            <span class="old-price">{{ item.price.beforeDiscount }}{{ item.price.currency == "USD" ? '$' : item.price.currency }}</span>
+            <span class="current-price discounted">{{ item.price.current }}{{ item.price.currency == "USD" ? '$' : item.price.currency }}</span>
             } @else {
-            <span class="current-price">{{ item.price.current }}{{ item.price.currency }}</span>
+            <span class="current-price">{{ item.price.current }}{{ item.price.currency == "USD" ? '$' : item.price.currency }}</span>
             }
           </div>
         </div>

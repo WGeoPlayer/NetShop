@@ -11,7 +11,7 @@ import { Service } from '../service';
   styleUrl: './navigation.css'
 })
 export class Navigation implements OnInit {
-  constructor(public service: Service, private cookies: CookieService, private router: Router) { }
+  constructor(public service: Service, private cookies: CookieService, public router: Router) { }
 
   @Output() openLogin = new EventEmitter<boolean>()
   isLoggedIn = signal<boolean>(false)
@@ -23,7 +23,7 @@ export class Navigation implements OnInit {
   }
 
   updateAuthStatus() {
-    const hasToken = this.cookies.check('user')
+    let hasToken = this.cookies.check('user')
     this.isLoggedIn.set(hasToken)
 
     if (hasToken) {
@@ -46,7 +46,11 @@ export class Navigation implements OnInit {
         next: (user: any) => {
           if (user.verified) {
             this.router.navigate(['/profile'])
-            console.log(user)
+            window.scrollTo({
+              top: 0,
+              left: 0,
+              behavior: 'smooth'
+            });
 
           } else {
             alert("Please verify your email first!")
@@ -61,8 +65,17 @@ export class Navigation implements OnInit {
       this.openLogin.emit(true)
     }
   }
-  
+
   scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  gotoshopall() {
+    this.router.navigate(["/shopAll"])
     window.scrollTo({
       top: 0,
       left: 0,

@@ -10,3 +10,5 @@
 @if (service.showDetails()) {
   <app-details [id]="service.activeId()" class="details-popup-wrapper" (closedetails)="service.showDetails.set($event)"></app-details>
 }
+
+<app-footer></app-footer>

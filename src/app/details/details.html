@@ -9,7 +9,7 @@
                 @for (img of product().images; track $index) {
                 <div class="thumb-item" [class.active]="selectedImageIndex() === $index"
                     (click)="selectedImageIndex.set($index)">
-                    <img [src]="img" alt="product">
+                    <img [src]="img" alt="product" #t (error)="t.src = 'https://placehold.co/400x400?text=No+Photo'">
                 </div>
                 }
             </div>
@@ -19,7 +19,8 @@
                     <i class="fa-solid fa-chevron-left"></i>
                 </button>
 
-                <img [src]="product().images[selectedImageIndex()]" class="main-img">
+                <img [src]="product().images[selectedImageIndex()]" class="main-img" #m
+                    (error)="m.src = 'https://placehold.co/600x600?text=No+Photo'">
 
                 <button class="slide-btn next" (click)="nextImage()">
                     <i class="fa-solid fa-chevron-right"></i>
@@ -38,16 +39,19 @@
                 </div>
                 <div class="price-row">
                     <span class="old-price">
-                        {{ product().price.beforeDiscount }}{{ product().price.currency }}
+                        {{ product().price.beforeDiscount }}{{ product().price.currency == "USD" ? '$' :
+                        product().price.currency }}
                     </span>
                     <span class="new-price">
-                        {{ product().price.current }}{{ product().price.currency }}
+                        {{ product().price.current }}{{ product().price.currency == "USD" ? '$' :
+                        product().price.currency }}
                     </span>
                 </div>
                 } @else {
                 <div class="price-row">
                     <span class="normal-price">
-                        {{ product().price.current }}{{ product().price.currency }}
+                        {{ product().price.current }}{{ product().price.currency == "USD" ? '$' :
+                        product().price.currency }}
                     </span>
                 </div>
                 }
@@ -59,12 +63,15 @@
             <h3 style="margin-bottom: 10px;" [style.color]="product().stock <= 0 ? 'red' : 'green'">stock:
                 {{product().stock < 0 ? 0 : product().stock}} </h3>
 
-            <p class="description">{{ product().description.split(' ').slice(0, 105).join(' ') }}
-                {{product().description.length >= 350 ? '...' : ''}} </p>
+                    <p class="description">{{ product().description}}</p>
 
-            <button class="add-btn" [disabled]="product().stock <= 0">
-                {{ product().stock > 0 ? 'Add to Cart' : 'Out of Stock' }}
-            </button>
+                    <button class="add-btn" [disabled]="product().stock <= 0 || !isLoggedIn()" (click)="addToCart()">
+                        @if (!isLoggedIn()) {
+                        Log in to Buy
+                        } @else {
+                        {{ product().stock > 0 ? 'Add to Cart' : 'Out of Stock' }}
+                        }
+                    </button>
         </section>
     </main>
     }

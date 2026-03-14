@@ -8,7 +8,7 @@
         }
         <input type="text" placeholder="email" formControlName="email">
         <input type="password" placeholder="password" formControlName="password">
-        <a (click)="gotosignup()">Don't have an account? Register here!</a>
+        <a (click)="gotosignup()">Don't have an account? <span class="spanah">Register here!</span></a>
         <button class="login" [disabled]="loginInfo.invalid">LOGIN</button>
         <button class="closelogin" (click)="close()">X</button>
     </form>

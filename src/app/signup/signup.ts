@@ -44,11 +44,12 @@ export class Signup {
       next: () => {
         alert("Successly created your account! Now please log In.")
         this.router.navigate(["/"])
+        this.opensign.emit(false)
       },
       error: (err: any) => {
         console.log("Full Error Object:", err);
 
-        const backendErrorString = err.error?.error;
+        let backendErrorString = err.error?.error;
 
         if (err.status === 409 || backendErrorString?.includes('already in use')) {
           this.errorMessage.set("This email is already registered!")

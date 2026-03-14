@@ -1,1 +1,55 @@
-<p>cart works!</p>
+<div class="hero-3d-container">
+    <model-viewer #phone src="cart.glb" interaction-prompt="none" camera-orbit="0deg 90deg 2.2m"
+        orientation="90deg 180deg 0deg" [field-of-view]="fov()" shadow-intensity="2" exposure="1.2">
+    </model-viewer>
+</div>
+<div class="cart-wrapper">
+    <h1 class="main-title">Cart</h1>
+
+    <div class="cart-header">
+        <span class="h-del"></span>
+        <span class="h-prod">Product</span>
+        <span class="h-qty">Qty</span>
+        <span class="h-price">Price</span>
+        <span class="h-total">Total</span>
+    </div>
+
+    @if (cartData() && cartData().products?.length > 0) {
+    <div class="cart-list">
+        @for (item of cartData().products; track item.productId) {
+        <div class="cart-row">
+            <div class="col-del">
+                <button class="del-btn" (click)="removeItem(item.productId)">x</button>
+            </div>
+            <div class="col-prod">
+                <img [src]="item.product?.thumbnail" alt="item" #ci
+                    (error)="ci.src='https://placehold.co/60x60?text=No+Photo'">
+                <span class="p-name">{{ item.product?.title || 'Loading...' }}</span>
+            </div>
+            <div class="item-content-wrapper">
+                <div class="col-qty">
+                    <div class="qty-stepper">
+                        <button (click)="updateQty(item.productId, item.quantity, -1)">-</button>
+                        <span class="qty-val">{{ item.quantity }}</span>
+                        <button (click)="updateQty(item.productId, item.quantity, 1)">+</button>
+                    </div>
+                </div>
+
+                <div class="col-price">${{ item.pricePerQuantity }}</div>
+                <div class="col-total">${{ (item.pricePerQuantity * item.quantity).toFixed(2) }}</div>
+            </div>
+        </div>
+        }
+    </div>
+
+    <div class="cart-footer">
+        <div class="summary-box">
+            <span class="total-label">Total :</span>
+            <span class="total-val">${{ totalPrice().toFixed(2) }}</span>
+        </div>
+        <button class="checkout-btn">PROCEED TO CHECKOUT</button>
+    </div>
+    } @else {
+    <p class="empty-cart">Your shopping cart is empty.</p>
+    }
+</div>

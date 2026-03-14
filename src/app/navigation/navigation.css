@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   background-color: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
@@ -155,4 +156,24 @@
 .hr {
   right: 0;
   background: linear-gradient(to left, black 0, rgb(27, 27, 27) 35%, transparent); 
+}
+
+@media screen and (max-width:655px) {
+  .logo{
+    width: 100%;
+    text-align: center;
+  }
+  .nav-menu{
+    width: 100%;
+    justify-content: center;
+  }
+  .nav-container{
+    height: 120px;
+  }
+}
+
+@media screen and (max-width:340px) {
+  .nav-container{
+    padding: 0 3%;
+  }
 }

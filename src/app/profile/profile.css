@@ -2,8 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 90vh;
-  background-color: #0f0f0f;
+  min-height: 100vh;
+  background: radial-gradient(circle, rgb(49, 49, 49) 0%, black 60%);
   color: white;
 }
 
@@ -16,7 +16,7 @@
   width: 100%;
   max-width: 450px;
   text-align: center;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .large-avatar {
@@ -44,7 +44,7 @@
 
 .detail-box {
   margin-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   padding-bottom: 0.5rem;
 }
 
@@ -68,4 +68,16 @@
 
 .edit-btn:hover {
   background: #7b2ff7;
+}
+
+@media screen and (max-width:369px) {
+  .profile-card{
+    padding: 3rem 1.5rem;
+  }
+}
+
+@media screen and (max-height:815px) {
+  .profile-wrapper{
+    padding-top: 120px;
+  }
 }

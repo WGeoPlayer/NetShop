@@ -61,7 +61,6 @@ export class Login {
     if (e.target.className == "popup") {
       this.trailer.emit(false)
     }
-
   }
 
   close() {

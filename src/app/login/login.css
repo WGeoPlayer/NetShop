@@ -15,7 +15,7 @@ form {
     border-radius: 16px;
     padding: 40px;
     width: 400px;
-    height: 320px;
+    min-height: 320px;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     color: white;
     position: relative;
@@ -119,6 +119,22 @@ form a{
     color: purple;
     text-decoration: underline;
     cursor: pointer;
+}
+
+.spanah{
+    color: blue; 
+    text-decoration: underline;
+    transition: 0.3s ease-in-out;
+}
+
+form a:hover .spanah{
+    color: white;
+    text-shadow: 0 0 10px white;
+}
+
+.spanah:hover{
+    color: white;
+    text-shadow: 0 0 10px white;
 }
 
 @keyframes fadeIn {

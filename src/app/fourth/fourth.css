@@ -26,6 +26,7 @@
   align-items: center;
   gap: 40px;
   flex-wrap: wrap;
+  padding-inline: 50px;
 }
 
 .brand-card {
@@ -98,4 +99,11 @@
 .brand-card:hover .brand-logo-placeholder {
   transform: scale(1.1);
   filter: brightness(1.3);
+}
+
+@media screen and (max-width:560px) {
+  .brand-title{
+    text-align: center;
+    font-size: 60px;
+  }
 }

@@ -34,7 +34,7 @@ h1.logo {
 }
 
 .main-title {
-    font-size: 3.5rem;
+    font-size: 3.4rem;
     color: #2C353B;
     font-weight: 800;
     line-height: 1.2;
@@ -70,6 +70,7 @@ h1.logo {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    padding-right: 50px;
 }
 
 .hero-right img {
@@ -102,5 +103,64 @@ h1.logo {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@media screen and (max-width:1000px) {
+    .hero-right {
+        position: absolute;
+        background: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        padding-right: 0;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .hero-left {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        z-index: 10;
+        background-color: transparent;
+        background: none;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        padding: 0;
+    }
+
+    .hero-container {
+        background: radial-gradient(circle, black 60%, rgb(49, 49, 49) 90% );
+        position: relative;
+        display: flex;
+        height: calc(100vh - 80px);
+        width: 100%;
+    }
+
+    h1.logo {
+        color: white;
+    }
+
+    .main-title {
+        color: white;
+    }
+
+    .sub-title {
+        color: white;
+    }
+
+    .btn-shop{
+        margin: 0 auto;
+    }
+
+    .text-group{
+        min-width: 305px;
+        padding: 5px;
     }
 }
