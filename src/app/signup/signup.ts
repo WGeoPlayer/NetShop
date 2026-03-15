@@ -47,7 +47,6 @@ export class Signup {
         this.opensign.emit(false)
       },
       error: (err: any) => {
-        console.log("Full Error Object:", err);
 
         let backendErrorString = err.error?.error;
 

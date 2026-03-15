@@ -1,4 +1,4 @@
-<app-navigation (openLogin)="handleLoginToggle($event)"></app-navigation>
+<app-navigation [class.nav-hidden]="isNavHidden" (openLogin)="handleLoginToggle($event)"></app-navigation>
 @if (isLoginShown) {
 <app-login (trailer)="handleLoginToggle($event)" (opensign)="handleSignupToggle($event)"></app-login>
 }

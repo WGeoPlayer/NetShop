@@ -20,7 +20,6 @@ export class Profile implements OnInit {
     this.service.getUserData().subscribe({
       next: (data) => {
         this.user.set(data);
-        console.log(data);
         
       },
       error: (err) => {

@@ -1,5 +1,5 @@
 import { Footer } from './footer/footer';
-import { Component, effect, signal } from '@angular/core';
+import { Component, effect, HostListener, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Navigation } from "./navigation/navigation";
 import { Login } from "./login/login";
@@ -15,10 +15,24 @@ import { Details } from './details/details';
 })
 export class App {
   protected readonly title = signal('final-project');
-  constructor(public service: Service) { 
+  constructor(public service: Service) {
     effect(() => {
-    this.updateScrollLock2(this.service.showDetails());
-  });
+      this.updateScrollLock2(this.service.showDetails());
+    });
+  }
+
+  isNavHidden = false;
+  private lastScrollPosition = 0;
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    if (currentScroll > this.lastScrollPosition && currentScroll > 50) {
+      this.isNavHidden = true;
+    } else {
+      this.isNavHidden = false;
+    }
+    this.lastScrollPosition = currentScroll;
   }
 
   isLoginShown: boolean = false;
@@ -27,10 +41,10 @@ export class App {
     this.isLoginShown = show;
     this.updateScrollLock(show);
     if (show) {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        })
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
     }
   }
 
