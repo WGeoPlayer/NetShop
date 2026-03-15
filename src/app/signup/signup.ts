@@ -18,7 +18,7 @@ export class Signup {
   registerInfo: FormGroup = new FormGroup({
     "firstName": new FormControl("", [Validators.required,]),
     "lastName": new FormControl("", [Validators.required,]),
-    "age": new FormControl("", [Validators.required, Validators.min(18)]),
+    "age": new FormControl("", [Validators.required, Validators.min(16)]),
     "email": new FormControl("", [Validators.required, Validators.email]),
     "password": new FormControl("", [Validators.required, Validators.minLength(8)]),
     "address": new FormControl("", [Validators.required,]),

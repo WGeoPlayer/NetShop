@@ -108,16 +108,7 @@ h1.logo {
 
 @media screen and (max-width:1000px) {
     .hero-right {
-        position: absolute;
-        background: black;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-        padding-right: 0;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        display: none;
     }
 
     .hero-left {
@@ -127,7 +118,6 @@ h1.logo {
         align-items: center;
         color: white;
         z-index: 10;
-        background-color: transparent;
         background: none;
         transform: translate(-50%, -50%);
         top: 50%;
@@ -136,11 +126,11 @@ h1.logo {
     }
 
     .hero-container {
-        background: radial-gradient(circle, black 60%, rgb(49, 49, 49) 90% );
         position: relative;
         display: flex;
         height: calc(100vh - 80px);
         width: 100%;
+        background: linear-gradient(to left, black, #676B89);
     }
 
     h1.logo {
